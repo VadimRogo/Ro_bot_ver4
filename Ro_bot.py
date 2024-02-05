@@ -213,7 +213,6 @@ def buy(symbol, price):
     try:
         timestamp = int(time.time() * 1000)
         accountInformation = json.loads(get_account_information())
-        print(accountInformation)
         for i in accountInformation['balances']:
             if i['asset'] == 'USDT':
                 balance_usdt = float(i['free'])
@@ -233,14 +232,14 @@ def buy(symbol, price):
             header = {
                 'X-MBX-APIKEY' : api_key
             }
-            percent = price / 1000
+            # percent = price / 1000
             params = {
                 'symbol' : symbol,
                 'side' : 'BUY',
                 'type' : 'LIMIT',
                 'timeInForce' : 'GTC',
                 'quantity' : quantity,
-                'price' : price - percent,
+                'price' : price,
                 'timestamp' : timestamp
             }
             param_str = ''
