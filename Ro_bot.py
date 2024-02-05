@@ -233,13 +233,14 @@ def buy(symbol, price):
             header = {
                 'X-MBX-APIKEY' : api_key
             }
+            percent = price / 1000
             params = {
                 'symbol' : symbol,
                 'side' : 'BUY',
                 'type' : 'LIMIT',
                 'timeInForce' : 'GTC',
                 'quantity' : quantity,
-                'price' : price,
+                'price' : price - percent,
                 'timestamp' : timestamp
             }
             param_str = ''
